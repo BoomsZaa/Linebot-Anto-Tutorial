@@ -18,9 +18,9 @@ app = Flask(__name__)
 # username of anto.io account
 user = 'BoomsKunG'
 # key of permission, generated on control panel anto.io
-key = 'ObbVFdRsiP5QOcjCk4qcZtqHvH1h3kfWFh0CJIF4'
+key = 'Oo1Aeoi3Y2Jy5HYG4QLcft0tNz6PTCObBu3d6qSO'
 # your default thing.
-thing = 'myDevice'
+thing = 'catbot'
 
 anto = antolib.Anto(user, key, thing)
 
@@ -46,26 +46,16 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = event.message.text
-    if(message == 'channel1 on'):
-        anto.pub('myChannel1', 1)
+	if(message == 'on'):
+        anto.pub('ch1', 1)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Turn On channel1"))
-    elif(message == 'channel1 off'):
-        anto.pub('myChannel1', 0)
+            TextSendMessage(text="Turn On"))
+    elif(message == 'off'):
+        anto.pub('ch1', 0)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Turn Off channel1"))
-    elif(message == 'channel2 on'):
-        anto.pub('myChannel2', 1)
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Turn On channel2"))
-    elif(message == 'channel2 off'):
-        anto.pub('myChannel2', 0)
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Turn Off channel2"))
+            TextSendMessage(text="Turn Off"))
     # line_bot_api.reply_message(
     #     event.reply_token,
     #     TextSendMessage(text="Turn Off channel1"))
